@@ -173,7 +173,37 @@ where ename like '%LA%' ;
 select * from employee
 where ename like '_CO%'; 
 
+-- NULL 검색 : is null ,    is not null  
 
+select * from employee; 
+
+-- commission 컬럼의 값이 null 인 사용자만 출력 : 보너스가 없는 사원
+select * from employee
+where commission is null ;
+
+-- commission 컬럼의 값이 null 인 사용자만 출력 : 보너스가 있는 사원
+select * from employee
+where commission is not null ;
+
+
+-- count () : 레코드의 갯수를 출력 : 페이징 처리.  <==  
+       -- null 은 카운트 하지 않느다. 
+
+select count(*) 총레코드수  
+from employee ; 
+
+select count(ename) 
+from employee; 
+
+select count(commission)        -- 레코드 수 : null 컬럼은 출력 하지 않는다. 
+from employee; 
+
+select commission  수능점수    -- null : 비어있는 상태,  0 점  
+from employee; 
+
+desc employee; 
+
+-- 테이블의 전체 레코드를 정확하게 출력: not null 컬럼을 count(컬럼명),  count(*)  
 
 
 

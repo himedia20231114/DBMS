@@ -1,20 +1,135 @@
 /*
-<ë¬¸ì œ1>  commission(ë³´ë„ˆìŠ¤) ì»¬ëŸ¼ì˜ null ì¸ ê°’ë§Œ ì¶œë ¥í•˜ë˜ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„,ìž…ì‚¬ë‚ ì§œë¥¼ ì¶œë ¥ 
-<ë¬¸ì œ2> dno(ë¶€ì„œë²ˆí˜¸) ê°€ 20ì´ê³  ìž…ì‚¬ë‚ ì§œê°€ 81ë…„ 4ì›” ì´í›„ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ì§ì±…ê³¼ ìž…ì‚¬ë‚ ì§œë¥¼ ì¶œë ¥
-<ë¬¸ì œ3> ì—°ë´‰ì„ ê³„ì‚°í•´ì„œ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì›”ê¸‰, ë³´ë„ˆìŠ¤, ì „ì²´ ì—°ë´‰ì„ ì¶œë ¥
-<ë¬¸ì œ4> commissionì´ null ì´ ì•„ë‹Œ ì‚¬ìš©ìžì˜ ì´ë¦„ë§Œ ì¶œë ¥ 
-<ë¬¸ì œ5> manager (ì§ê¸‰ìƒì‚¬) 7698 ì¸ ì‚¬ì›ì´ë¦„ê³¼ ì§ì±…ì„ ì¶œë ¥.
-<ë¬¸ì œ6> ì›”ê¸‰ì´ 1500 ì´ìƒì´ê³  ë¶€ì„œê°€ 20ì¸ ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„ê³¼ ìž…ì‚¬ë‚ ì§œ, ë¶€ì„œë²ˆí˜¸, ì›”ê¸‰ì„ ì¶œë ¥
-<ë¬¸ì œ7> ìž…ì‚¬ë‚ ì§œê°€ 81ë…„ 4ì›” 1ì¼ ì´ìƒì´ê³  81ë…„ 12ì›” ë§ì¼ê¹Œì§€ì¸ ì‚¬ì› ì´ë¦„ê³¼ ìž…ì‚¬ë‚ ì§œì„ ì¶œë ¥
-<ë¬¸ì œ8> ì§ì±…(job) salesman ì´ë©´ì„œ ì—°ë´‰ì´ 1500 ì´ìƒì´ë©´ì„œ ë¶€ì„œë²ˆí˜¸ê°€ 30ì¸ ì‚¬ì›ëª…ì„ ì¶œë ¥
-<ë¬¸ì œ9> ì›”ê¸‰ì´ 1500 ì´í•˜ì´ë©´ì„œ ë¶€ì„œë²ˆí˜¸ê°€ 20ë²ˆ ì´ ì•„ë‹Œ ì‚¬ì›ì´ë¦„ê³¼, ì›”ê¸‰ê³¼, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¶œë ¥
-<ë¬¸ì œ10> ì‚¬ì›ë²ˆí˜¸(eno) ê°€ 7788, 7782 ì¸ ë¶€ì„œë²ˆí˜¸ì™€ ì´ë¦„ê³¼ ì§ì±…ì„ ì¶œë ¥ 
-<ë¬¸ì œ11> ì—…ë¬´ê°€ [SALESMAN]ì´ ì•„ë‹Œ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬ ê²€ìƒ‰
-<ë¬¸ì œ12> ê¸‰ì—¬ê°€ [2000]ì´ìƒì¸ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬ ê²€ìƒ‰
-<ë¬¸ì œ13> ì‚¬ì›ì´ë¦„ì´ [A],[B],[C]ë¡œ ì‹œìž‘ë˜ëŠ” ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬ ê²€ìƒ‰
-<ë¬¸ì œ14> [1981ë…„ 5ì›” 1ì¼]ì´ì „ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬,ìž…ì‚¬ì¼ ê²€ìƒ‰
-<ë¬¸ì œ15> ì—…ë¬´ê°€ [SALESMAN]ì¸ ì‚¬ì› ì¤‘ ê¸‰ì—¬ê°€ [1500]ì´ìƒì¸ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬ ê²€ìƒ‰
-<ë¬¸ì œ16> ë¶€ì„œë²ˆí˜¸ê°€ [10]ì´ê±°ë‚˜ ì—…ë¬´ê°€ [MANAGER]ì¸ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬,ë¶€ì„œë²ˆí˜¸ ê²€ìƒ‰
-<ë¬¸ì œ17> ê¸‰ì—¬ê°€ [1000~3000]ì¸ ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸,ì‚¬ì›ì´ë¦„,ì—…ë¬´,ê¸‰ì—¬ ê²€ìƒ‰
+<¹®Á¦1>  commission(º¸³Ê½º) ÄÃ·³ÀÇ null ÀÎ °ª¸¸ Ãâ·ÂÇÏµÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§,ÀÔ»ç³¯Â¥¸¦ Ãâ·Â
+<¹®Á¦2> dno(ºÎ¼­¹øÈ£) °¡ 20ÀÌ°í ÀÔ»ç³¯Â¥°¡ 81³â 4¿ù ÀÌÈÄ »ç¿øÀÇ ÀÌ¸§°ú Á÷Ã¥°ú ÀÔ»ç³¯Â¥¸¦ Ãâ·Â
+<¹®Á¦3> ¿¬ºÀÀ» °è»êÇØ¼­ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¿ù±Þ, º¸³Ê½º, ÀüÃ¼ ¿¬ºÀÀ» Ãâ·Â
+<¹®Á¦4> commissionÀÌ null ÀÌ ¾Æ´Ñ »ç¿ëÀÚÀÇ ÀÌ¸§¸¸ Ãâ·Â 
+<¹®Á¦5> manager (Á÷±Þ»ó»ç) 7698 ÀÎ »ç¿øÀÌ¸§°ú Á÷Ã¥À» Ãâ·Â.
+<¹®Á¦6> ¿ù±ÞÀÌ 1500 ÀÌ»óÀÌ°í ºÎ¼­°¡ 20ÀÎ »ç¿øÀÇ »ç¿øÀÌ¸§°ú ÀÔ»ç³¯Â¥, ºÎ¼­¹øÈ£, ¿ù±ÞÀ» Ãâ·Â
+<¹®Á¦7> ÀÔ»ç³¯Â¥°¡ 81³â 4¿ù 1ÀÏ ÀÌ»óÀÌ°í 81³â 12¿ù ¸»ÀÏ±îÁöÀÎ »ç¿ø ÀÌ¸§°ú ÀÔ»ç³¯Â¥À» Ãâ·Â
+<¹®Á¦8> Á÷Ã¥(job) salesman ÀÌ¸é¼­ ¿¬ºÀÀÌ 1500 ÀÌ»óÀÌ¸é¼­ ºÎ¼­¹øÈ£°¡ 30ÀÎ »ç¿ø¸íÀ» Ãâ·Â
+<¹®Á¦9> ¿ù±ÞÀÌ 1500 ÀÌÇÏÀÌ¸é¼­ ºÎ¼­¹øÈ£°¡ 20¹ø ÀÌ ¾Æ´Ñ »ç¿øÀÌ¸§°ú, ¿ù±Þ°ú, ºÎ¼­¹øÈ£¸¦ Ãâ·Â
+<¹®Á¦10> »ç¿ø¹øÈ£(eno) °¡ 7788, 7782 ÀÎ ºÎ¼­¹øÈ£¿Í ÀÌ¸§°ú Á÷Ã¥À» Ãâ·Â 
+<¹®Á¦11> ¾÷¹«°¡ [SALESMAN]ÀÌ ¾Æ´Ñ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+<¹®Á¦12> ±Þ¿©°¡ [2000]ÀÌ»óÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+<¹®Á¦13> »ç¿øÀÌ¸§ÀÌ [A],[B],[C]·Î ½ÃÀÛµÇ´Â »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+<¹®Á¦14> [1981³â 5¿ù 1ÀÏ]ÀÌÀü¿¡ ÀÔ»çÇÑ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿©,ÀÔ»çÀÏ °Ë»ö
+<¹®Á¦15> ¾÷¹«°¡ [SALESMAN]ÀÎ »ç¿ø Áß ±Þ¿©°¡ [1500]ÀÌ»óÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+<¹®Á¦16> ºÎ¼­¹øÈ£°¡ [10]ÀÌ°Å³ª ¾÷¹«°¡ [MANAGER]ÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿©,ºÎ¼­¹øÈ£ °Ë»ö
+<¹®Á¦17> ±Þ¿©°¡ [1000~3000]ÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+
+¿Ï·á ½Ã°£ : 4½Ã 00ºÐ±îÁö.
+
+1 .¹æ¹ÎÇõ
+    ÃÖÇöÁØ, ³ë¼ö¿¬, ±è¿ìºó, °­¼ö¹Î ±è³ª°æ
+
+2. Á¤»ó¿±
+    ±è±â¹é, Á¦Áö¿î, Áö¿Ï±â, ±èÀç¿µ, Á¤´Ù½½
+
 */
+
+-- <¹®Á¦1>  commission(º¸³Ê½º) ÄÃ·³ÀÇ null ÀÎ °ª¸¸ Ãâ·ÂÇÏµÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§,ÀÔ»ç³¯Â¥¸¦ Ãâ·Â
+select * from employee; 
+
+select eno, ename, hiredate  --  ,commission
+from employee
+where commission is null ; 
+
+-- <¹®Á¦2> dno(ºÎ¼­¹øÈ£) °¡ 20ÀÌ°í ÀÔ»ç³¯Â¥°¡ 81³â 4¿ù ÀÌÈÄ »ç¿øÀÇ ÀÌ¸§°ú Á÷Ã¥°ú ÀÔ»ç³¯Â¥¸¦ Ãâ·Â
+
+select ename ÀÌ¸§ , job Á÷Ã¥, hiredate as ÀÔ»ç³¯Â¥  -- , dno 
+from employee
+where dno = 20 and hiredate > '81/04/01' ; 
+
+-- <¹®Á¦3> ¿¬ºÀÀ» °è»êÇØ¼­ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¿ù±Þ, º¸³Ê½º, ÀüÃ¼ ¿¬ºÀÀ» Ãâ·Â
+--  Á¶°Ç ÀüÃ¼¿¬ºÀ : 30000ÀÌ»ó 
+-- ¿¬ºÀ  = ¿ù±Þ *12 + º¸³Ê½º 
+      -- NVL( commission, 0 )  : commission ÄÃ·³ÀÇ null => 0 
+select eno »ç¿ø¹øÈ£, ename »ç¿øÀÌ¸§, salary, commission , salary *12 + nvl (commission, 0)  ÀüÃ¼¿¬È«
+from employee 
+where salary *12 + nvl (commission, 0) > 30000; 
+
+-- <¹®Á¦4> commissionÀÌ null ÀÌ ¾Æ´Ñ »ç¿ëÀÚÀÇ ÀÌ¸§¸¸ Ãâ·Â
+select ename ÀÌ¸§, commission
+from employee
+where commission is not null; 
+
+-- <¹®Á¦5> manager (Á÷±Þ»ó»ç) 7698 ÀÎ »ç¿øÀÌ¸§°ú Á÷Ã¥À» Ãâ·Â.
+select ename »ç¿øÀÌ¸§, job Á÷Ã¥, manager
+from employee
+where manager = 7698; 
+
+select *
+from employee
+where eno = 7698; 
+
+
+-- <¹®Á¦6> ¿ù±ÞÀÌ 1500 ÀÌ»óÀÌ°í ºÎ¼­°¡ 20ÀÎ »ç¿øÀÇ »ç¿øÀÌ¸§°ú ÀÔ»ç³¯Â¥, ºÎ¼­¹øÈ£, ¿ù±ÞÀ» Ãâ·Â
+select eno, hiredate, dno, salary
+from employee
+where salary > 1500;
+
+-- <¹®Á¦7> ÀÔ»ç³¯Â¥°¡ 81³â 4¿ù 1ÀÏ ÀÌ»óÀÌ°í 81³â 12¿ù ¸»ÀÏ±îÁöÀÎ »ç¿ø ÀÌ¸§°ú ÀÔ»ç³¯Â¥À» Ãâ·Â
+  -- and 
+  -- between A and B   : A¿Í B »çÀÌ 
+  
+  select ename, hiredate
+  from employee
+  where hiredate > = '81/04/01' and hiredate <= '81/12/31';
+  
+    select ename, hiredate
+  from employee
+  where hiredate between '81/04/01' and  '81/12/31';
+
+  select ename, hiredate
+  from employee
+  where hiredate like '81%'; 
+  
+-- <¹®Á¦8> Á÷Ã¥(job) salesman ÀÌ¸é¼­ ¿ù±ÞÀÌ 1500 ÀÌ»óÀÌ¸é¼­ ºÎ¼­¹øÈ£°¡ 30ÀÎ »ç¿ø¸íÀ» Ãâ·Â
+select ename »ç¿ø¸í  --  , job, salary 
+from employee
+where job = 'SALESMAN' and salary >= 1500 ; 
+
+-- <¹®Á¦9> ¿ù±ÞÀÌ 1500 ÀÌÇÏÀÌ¸é¼­ ºÎ¼­¹øÈ£°¡ 20¹ø ÀÌ ¾Æ´Ñ »ç¿øÀÌ¸§°ú, ¿ù±Þ°ú, ºÎ¼­¹øÈ£¸¦ Ãâ·Â
+select ename , salary, dno 
+from employee
+where salary <= 1500 and dno = 20 ; 
+
+-- <¹®Á¦10> »ç¿ø¹øÈ£(eno) °¡ 7788, 7782 ÀÎ ºÎ¼­¹øÈ£¿Í ÀÌ¸§°ú Á÷Ã¥À» Ãâ·Â 
+select dno, ename, job , eno 
+from employee
+where eno = 7788 or eno =7782; 
+
+--<¹®Á¦11> ¾÷¹«°¡ [SALESMAN]ÀÌ ¾Æ´Ñ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+select eno, ename, job, salary 
+from employee
+where job <> 'SALESMAN' ;         -- <>   ,   !=  ,   ^= 
+
+--<¹®Á¦12> ±Þ¿©°¡ [2000]ÀÌ»óÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+select eno, ename, job, salary
+from employee
+where salary >= 2000;  
+
+--<¹®Á¦13> »ç¿øÀÌ¸§ÀÌ [A],[B],[C]·Î ½ÃÀÛµÇ´Â »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+select eno, ename, job, salary
+from employee
+where ename < 'D'; 
+
+select eno, ename, job, salary
+from employee
+where ename like 'A%' or ename like 'B%' or ename like 'C%'; 
+
+
+-- <¹®Á¦14> [1981³â 5¿ù 1ÀÏ]ÀÌÀü¿¡ ÀÔ»çÇÑ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿©,ÀÔ»çÀÏ °Ë»ö
+select eno, ename, job, salary, hiredate 
+from employee
+where  hiredate < '1981/05/01'; 
+
+<¹®Á¦15> ¾÷¹«°¡ [SALESMAN]ÀÎ »ç¿ø Áß ±Þ¿©°¡ [1500]ÀÌ»óÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+<¹®Á¦16> ºÎ¼­¹øÈ£°¡ [10]ÀÌ°Å³ª ¾÷¹«°¡ [MANAGER]ÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿©,ºÎ¼­¹øÈ£ °Ë»ö
+<¹®Á¦17> ±Þ¿©°¡ [1000~3000]ÀÎ »ç¿øÀÇ »ç¿ø¹øÈ£,»ç¿øÀÌ¸§,¾÷¹«,±Þ¿© °Ë»ö
+
+
+
+
+
 
