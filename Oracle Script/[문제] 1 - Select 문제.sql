@@ -124,9 +124,25 @@ select eno, ename, job, salary, hiredate
 from employee
 where  hiredate < '1981/05/01'; 
 
-<문제15> 업무가 [SALESMAN]인 사원 중 급여가 [1500]이상인 사원의 사원번호,사원이름,업무,급여 검색
-<문제16> 부서번호가 [10]이거나 업무가 [MANAGER]인 사원의 사원번호,사원이름,업무,급여,부서번호 검색
-<문제17> 급여가 [1000~3000]인 사원의 사원번호,사원이름,업무,급여 검색
+--<문제15> 업무가 [SALESMAN]인 사원 중 급여가 [1500]이상인 사원의 사원번호,사원이름,업무,급여 검색
+select eno, ename, job, salary
+from employee
+where job = 'SALESMAN' and salary >= 1500; 
+
+-- <문제16> 부서번호가 [10]이거나 업무가 [MANAGER]인 사원의 사원번호,사원이름,업무,급여,부서번호 검색
+select eno, ename, job, salary, dno 
+from employee
+where dno = 10 or job = 'MANAGER'; 
+
+--<문제17> 급여가 [1000~3000]인 사원의 사원번호,사원이름,업무,급여 검색
+select eno, ename, job, salary
+from employee
+where salary between 1000 and 3000; 
+
+select eno, ename, job, salary
+from employee
+where salary >= 1000 and salary <= 3000; 
+
 
 
 
