@@ -235,7 +235,7 @@ from employee
 where salary > 1500
 order by salary desc ; 
 
--- order by에서 여러 컬럼을 정렬 할때, 앞의 컬럼을 모두 정렬하고, 같은값이 존재할때 같은 값에 대해서 뒤의 컬럼을 절렬 
+-- order by에서 여러 컬럼을 정렬 할때, 앞의 컬럼을 모두 정렬하고, 같은값이 존재할때 같은 값에 대해서 뒤의 컬럼을 정렬 
     -- 답변형 계시판 만들때 사용됨.... 
 
 select dno , ename
