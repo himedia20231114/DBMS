@@ -32,7 +32,7 @@ group by dno                -- 같은 부서를 그룹핑
 
 select dno 부서번호, count(*) , SUM (salary) , round ( avg(salary), 2) , max(salary), min (salary) 
 from employee
-where job = ( select job from employee where ename = 'SMITH'  )
+where dno = ( select dno from employee where ename = 'SMITH'  )
 group by dno 
 
 4. group by - 부서별 최소월급을 가져오되 최소월급이 1000 이상인 것만 출력하세요. 
