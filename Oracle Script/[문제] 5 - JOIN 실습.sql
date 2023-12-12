@@ -90,13 +90,13 @@ select * from zipcode10;
  values (100, '»ç°ú', 25000, 100) ; 
  
   insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
- values (200, 'µþ±â', 30000, 200) ; 
+  values (200, 'µþ±â', 30000, 200) ; 
   insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
- values (300, '¹è', 15000, 300) ; 
+  values (300, '¹è', 15000, 300) ; 
   insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
- values (400, '¹Ù³ª³ª', 35000, 400) ; 
+  values (400, '¹Ù³ª³ª', 35000, 400) ; 
   insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
- values (500, '±Ö', 5000, 500) ; 
+  values (500, '±Ö', 5000, 500) ; 
  
 commit ; 
 
@@ -130,7 +130,7 @@ commit ;
         JOIN product10 p 
             on o.pro_id = p.pro_id 
         JOIN zipcode10 z
-            on m.zipcode = z.zipcode 
+            on m.zipcode = z.zipcode ; 
             
             
 
