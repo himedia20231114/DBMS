@@ -6,6 +6,29 @@
         order10 : 주문 정보를 저장하는 테이블 
 */
 
+-- 테이블 삭제 :  Foreign Key 가 참조하는 테이블은 삭제 되지 않는다.  : cascade constraints  
+     -- 1. 참조하는 테이블을 먼저 삭제후 삭제해야 한다. 
+     -- 2.  테이블 삭제시 cascade constraints 옵션을 사용해서 강제 삭제 
+
+-- Member10 테이블에서  참조 되는 테이블 이므로 삭제가 안된다. 
+drop table zipcode10; 
+-- Order10 테이블에서 참조 되기 때문에 삭제 할 수 없다. 
+drop table member10; 
+
+-- select * from user_constraints where table_name = 'MEMBER10' ; 
+drop table order10 ; 
+drop table product10; 
+
+--  2.  테이블 삭제시 cascade constraints 옵션을 사용해서 강제 삭제 
+        -- zipcode10 테이블을  강제  테이블을 삭제함. 
+drop table zipcode10 cascade constraints;
+drop table member10 cascade constraints; 
+drop table order10 cascade constraints;
+drop table product10 cascade constraints; 
+
+
+
+
 create table zipcode10 (
         zipcode number(6) not null constraint PK_ZIPCODE10_ZIPCODE Primary key, 
         si_do varchar2(200) not null, 
@@ -60,6 +83,13 @@ values ( 40 , '광주', '종로구', '관철동 100번지' ) ;
 insert into zipcode10 ( zipcode, si_do, gu_gun, bungi) 
 values ( 50 , '대전', '종로구', '관철동 100번지' ) ;
 
+-- Member10 테이블에는 참조 되지 않지만 zipcode10 테이블에는 존재함 <== RIGHT OUTER JOIN 
+insert into zipcode10 ( zipcode, si_do, gu_gun, bungi) 
+values ( 60 , '강릉', '종로구', '관철동 100번지' ) ;
+insert into zipcode10 ( zipcode, si_do, gu_gun, bungi) 
+values ( 70 , '울진', '종로구', '관철동 100번지' ) ;
+
+
 commit ; 
 
 select * from zipcode10; 
@@ -79,6 +109,13 @@ select * from zipcode10;
   insert into member10 ( m_id, pass, name, email, zipcode) 
  values ( 5 , '1234', '최길동' , 'eee@aaa.com', 50); 
  
+ -- member10 테이블에는 존재하지만 주문정보에는 없는회원    <== LEFT OUTER JOIN 
+insert into member10 ( m_id, pass, name, email, zipcode) 
+ values ( 6 , '1234', '심길동' , 'fff@aaa.com', 40); 
+insert into member10 ( m_id, pass, name, email, zipcode) 
+ values ( 7 , '1234', '이길동' , 'eee@aaa.com', 50); 
+ 
+ 
  commit ; 
  
  select * from member10; 
@@ -97,6 +134,13 @@ select * from zipcode10;
   values (400, '바나나', 35000, 400) ; 
   insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
   values (500, '귤', 5000, 500) ; 
+  
+  -- 주문정보에는 없는 제품(주문되지 않는 제품)  ,  <== RIGHT OUTER  JOIN 
+insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
+  values (600, '망고', 35000, 400) ; 
+  insert into product10 ( pro_id, pro_name, pro_price, pro_cnt)
+  values (700, '대추', 5000, 500) ; 
+  
  
 commit ; 
 
@@ -132,18 +176,122 @@ commit ;
         JOIN zipcode10 z
             on m.zipcode = z.zipcode ; 
             
-            
+
+-- 모델링 되지 않는 주문 테이블  <== order11 ,   
+create table order11 (
+    o_id number (6) not null primary key, 
+    
+    m_name varchar2(200)  not null ,            -- 주문자 이름
+    m_phone varchar2(200) not null,             -- 주문자 핸드폰 번호
+    m_addr varchar2(200) not null ,               -- 주문자의 배송 주소  
+    m_email varchar2(200) null ,                    -- 주문자의 매일 주소 
+    
+    p_id number (6) not null ,                          -- 제품 번호
+    p_name varchar2(200) not null ,                -- 제품이름 
+    p_price number(7,2) not null,                     -- 제품 가격
+    p_cnt number(6) null                                   -- 제품 수량 
+    )
+    
+    insert into order11 ( o_id, m_name, m_phone, m_addr, m_email, p_id, p_name, p_price, p_cnt) 
+    values ( 10 , '홍길동', '010-1111-1111', '서울', 'aaa@aaa.com', 100, '사과', 25000, 100); 
+    
+    insert into order11 ( o_id, m_name, m_phone, m_addr, m_email, p_id, p_name, p_price, p_cnt) 
+    values ( 20 , '김길동', '010-2222-1111', '부산', 'bbb@aaa.com', 100, '배', 25000, 100); 
+    commit; 
+    
+    select * from order11; 
 
 
+-- JOIN :  ANSI JOIN , 
+     --   INNER JOIN  :  on 절에 공통의 값만 출력 한다. 
+     --   LEFT OUTER JOIN : 왼쪽 테이블의 모든 내용 출력 
+     --   RIGHT OUTER JOIN : 오른 쪽의 모든 내용 출력 
+     
+-- member10 (다)  , zipcode ( 1 )  테이블 : 
+select * 
+from member10 m
+    JOIN zipcode10 z
+        ON m.zipcode = z.zipcode ; 
+        
+-- member10 에는 on 절에 매칭 되지 않더라도 오른쪽 테이블의 모든 값을 출력 : RIGHT OUTER JOIN 
+
+select * 
+from member10 m 
+    RIGHT OUTER JOIN zipcode10 z
+        on m.zipcode = z.zipcode ; 
+    
+
+-- 주문 테이블 ( order10 ), 주문자 정보 ( member10 )     <==== on  m_id 
+
+select * from order10 ; 
+
+select * 
+from order10 o 
+    JOIN member10 m 
+        ON o.m_id = m.m_id; 
+
+-- 주문 정보에 없는 사용자 출력 (주문하지 않는 사용자) : RIGHT OUTER JOIN
+select *
+from order10 o 
+    RIGHT OUTER JOIN member10 m 
+        ON o.m_id = m.m_id ; 
 
 
+select *
+from member10 m  
+    LEFT OUTER JOIN order10 o 
+        ON m.m_id = o.m_id ; 
 
+-- 3개 테이블 조인 : Order10, member10, zipcode10  
 
+select *
+from order10 o 
+    JOIN member10 m 
+        ON o.m_id = m.m_id 
+    JOIN zipcode10 z 
+        ON m.zipcode = z.zipcode ; 
+ 
+        
+-- 4개 테이블 조인 : order10, member10, zipcode10 , product10 
+-- INNER 조인 
+ select * 
+ from order10 o 
+    JOIN member10 m 
+        ON  o.m_id = m.m_id 
+    JOIN zipcode10 z 
+        ON m.zipcode = z.zipcode 
+    JOIN product10 p 
+        ON o.pro_id = p.pro_id ; 
 
+ --  주문하지 않는 사용자 정보도 출력, 판매되지 않는 제품도  OUTER JOIN 을 사용해서 출력 
+  select * 
+ from order10 o 
+    JOIN member10 m 
+        ON  o.m_id = m.m_id 
+    JOIN zipcode10 z 
+        ON m.zipcode = z.zipcode 
+   RIGHT OUTER JOIN product10 p 
+        ON o.pro_id = p.pro_id ;      
+        
+-- Left OUTER JOIN 
+select *
+ from  member10 m 
+     left outer JOIN order10 o
+        ON  o.m_id = m.m_id 
+    JOIN zipcode10 z 
+        ON m.zipcode = z.zipcode 
+   left outer JOIN product10 p 
+        ON o.pro_id = p.pro_id ;       
 
-
-
-
-
+create view v_join10
+as 
+ select ord_id, o.m_id, name, email, m.zipcode, p.pro_id, pro_name
+ from order10 o 
+    JOIN member10 m 
+        ON  o.m_id = m.m_id 
+    JOIN zipcode10 z 
+        ON m.zipcode = z.zipcode 
+    JOIN product10 p 
+        ON o.pro_id = p.pro_id ; 
 
 

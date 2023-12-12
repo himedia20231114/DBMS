@@ -240,7 +240,7 @@ select dno ,count(*) , min(salary) 부서별최소월급
 from employee
 group by dno               -- 부서번호 동일한 값을 그룹핑 
 having min(salary) > (
-            -- 서브퀄리 : 30 번부서의 최소 월급 
+            -- 서브쿼리 : 30 번부서의 최소 월급 
             select min(salary) from employee
             where dno = 30
             
