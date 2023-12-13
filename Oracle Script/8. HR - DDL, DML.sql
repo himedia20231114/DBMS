@@ -320,3 +320,69 @@ select * from user_constraints where table_name in ('MEMBER2') ;
 insert into member2 (id , addr, jumin, phone, age, weight) 
 values ( 'abcd', '서울', '123456-789101', '010-1111-1111', 30 , 77.77); 
 commit ; 
+
+
+/* UNIQUE :  중복된 값을 넣을수 없다. null을 넣을 수 있다.  테이블에 여러번 넣을수 있다. 
+
+*/ 
+
+
+create table member3 (
+    id varchar2(50) not null constraint PK_MEMBER3_ID  primary key ,     -- 제약 조건 이름을 생략하면 Oracle에서 자동으로 지정함. 
+    pass varchar2(50) constraint NN_MEMBER3_PASS not null, 
+    addr varchar2(100) null , 
+    jumin char(13) null constraint U_MEMBER3_JUMIN unique  ,               -- 중복되면 안됨 
+    phone varchar2(50) not null constraint U_MEMBER3_PHONE unique , -- 중복되면 안됨 
+    age number(3) ,                 -- 정수 3자리
+    weight number (5,2)         -- 실수 전체 5자리, 소숫점이하 2자리
+    ) ; 
+
+insert into member3 (id , pass,  addr, jumin, phone, age, weight) 
+values ( 'abc', '1234', '서울', '123456-789102', '010-1111-1112', 30 , 77.77); 
+commit ; 
+
+-- CHECK 제약 조건 : 컬럼에 조건에 맞는 값만 넣을 수 있도록 함. 
+drop table member4 ; 
+
+create table member4 (
+    id varchar2(50) not null constraint PK_MEMBER4_ID  primary key ,     -- 제약 조건 이름을 생략하면 Oracle에서 자동으로 지정함. 
+    pass varchar2(50) constraint NN_MEMBER4_PASS not null, 
+    addr varchar2(100) null constraint CK_MEMBER4_ADDR check (addr in ('서울', '부산','대구')) , 
+    jumin char(13) null constraint U_MEMBER4_JUMIN unique  ,               -- 중복되면 안됨 
+    phone varchar2(50) not null constraint U_MEMBER4_PHONE unique , -- 중복되면 안됨 
+    age number(3) constraint CK_MEMBER4_AGE check (age > 0 and age < 200)  ,                 -- 정수 3자리
+    gender char(1) constraint CK_MEMBER4_GENDER check ( gender in ('w', 'm')), 
+    weight number (5,2)        -- 실수 전체 5자리, 소숫점이하 2자리
+
+    ) ; 
+
+insert into member4 (id , pass,  addr, jumin, phone, age, weight, gender  ) 
+values ( 'abc', '1234', '대구', '123456-789102', '010-1111-1112', 100, 77.77, 'w'); 
+commit ; 
+
+-- default : 제약조건이 아니다. 제약조건 이름을 부여 할 수 없다. 
+        -- 값을 넣을때 값이 들어가고 값을 넣지 않을때 default 로 설정된 값이 들어간다. 
+
+create table member5 (
+    id varchar2(50) not null constraint PK_MEMBER5_ID  primary key ,     -- 제약 조건 이름을 생략하면 Oracle에서 자동으로 지정함. 
+    pass varchar2(50) constraint NN_MEMBER5_PASS not null, 
+    addr varchar2(100) null constraint CK_MEMBER5_ADDR check (addr in ('서울', '부산','대구')) , 
+    jumin char(13) null constraint U_MEMBER5_JUMIN unique  ,               -- 중복되면 안됨 
+    phone varchar2(50) not null constraint U_MEMBER5_PHONE unique , -- 중복되면 안됨 
+    age number(3) constraint CK_MEMBER5_AGE check (age > 0 and age < 200)  ,                 -- 정수 3자리
+    gender char(1) constraint CK_MEMBER5_GENDER check ( gender in ('w', 'm')), 
+    weight number (5,2),         -- 실수 전체 5자리, 소숫점이하 2자리
+    hiredate date  default sysdate, 
+    addr2 char(10) default '서울' , 
+    age2 number default 0 
+    ) ; 
+    
+select * from member5; 
+
+insert into member5 (id , pass,  addr, jumin, phone, age, weight, gender  ) 
+values ( 'abc', '1234', '대구', '123456-789102', '010-1111-1112', 100, 77.77, 'w'); 
+
+insert into member5 (id , pass,  addr, jumin, phone, age, weight, gender , hiredate, addr2, age2 ) 
+values ( 'abcd', '1234', '대구', '123456-789103', '010-1111-1113', 100, 77.77, 'w', '22/11/11', '광주', 30); 
+
+commit ; 

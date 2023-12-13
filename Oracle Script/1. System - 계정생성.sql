@@ -20,7 +20,7 @@ temporary tablespace TEMP;
 
 -- 2. 계정에 권한을 부여하기 : connect : 접속 , resource : 객체 생성, 수정, 삭제   
 grant resource, connect to C##HR10; 
-grant create view to C##HR; 
+grant create view to C##HR10 ; 
 
 
 --3. 테이블 스페이스에서 사용량 할당. 
