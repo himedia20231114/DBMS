@@ -386,3 +386,16 @@ insert into member5 (id , pass,  addr, jumin, phone, age, weight, gender , hired
 values ( 'abcd', '1234', '대구', '123456-789103', '010-1111-1113', 100, 77.77, 'w', '22/11/11', '광주', 30); 
 
 commit ; 
+
+
+-- 날짜 타입에 체크 제약 조건 
+
+CREATE TABLE emp55 (
+    e_id NUMBER PRIMARY KEY, -- 아이디 컬럼
+    h_date DATE  CHECK (h_date BETWEEN TO_DATE('1981-01-01', 'YYYY-MM-DD') AND TO_DATE('1981-12-31', 'YYYY-MM-DD')) 
+);
+
+insert into emp55 
+values ( 10, '81/11/11'); 
+
+commit ; 
