@@ -45,6 +45,45 @@ delete from dept60
 where dno = 20 ; 
 
 
+-- MySQL은 자동 커밋 트랜 잭션 <== 
+create table account10 (
+	no int not null primary key , 
+	name varchar(50) not null, 
+    money double not null default 0 
+    ); 
+
+select * from account10 ; 
+
+insert into account10 
+values ( 1 , '홍길동', 100) ; 
+
+insert into account10 
+values ( 2 , '이순신', 200) ; 
+   
+-- 홍길동 계좌에서 10억을 이순신 계좌로 입금 : 트랜잭션이 2번 발생됨 
+update account10 
+set money = money -10 
+where no = 1 ; 
+
+update account10 
+set money = money + 10
+where no = 2 ; 
+
+-- 홍길동 계좌에서 10억을 이순신 계좌로 입금 : 트랜잭션이 1 발생됨 
+start transaction ; 
+
+update account10 
+set money = money -10 
+where no = 1 ; 
+
+update account10 
+set money = money + 10
+where no = 2 ; 
+
+select * from account10 ; 
+rollback; 
+commit; 
+
 
 
 
