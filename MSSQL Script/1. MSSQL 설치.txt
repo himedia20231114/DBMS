@@ -1,0 +1,28 @@
+MS-SQL 설치 ( 2019 )  <== 6개월(180일), Enterprise Edtion 
+   - Server   : TCP 1433 
+   - SSMS (SQL Server Management Studio ) : SQL Server 를 관리하는 툴 ( sql developer, workbanch) 
+
+  설치 기능 선택 
+      - 인스턴스 기능 : 1대의 물리적인 서버에 여러번 sql server 보안을 분리해서 각 회사마다 호스팅 
+	<== Enterprise Edtion 에서 가능 한기능 
+	Sever에 설치된 SQL Server를 각 각 호칭 할때 인스턴스 라 호칭한다. 
+	- 기본 인스턴스 : 제일 처음 SQL Server Server, 인스턴스명 ( MSSQLSERVER) 
+	- 명명 인스턴스 : 설치 시 인스턴스명을 부여 해서 설치 
+	- 서버에 여러번 각각 보안을 분리해서 설치가됨 
+	- 설치 : 데이터베이스 엔진 서비스
+
+      - 공유 기능 : 
+	- 모든 인스턴스에서 공유되는 기능  
+   	- 단일 서버에 1번만 설치되면 됨 
+	- 설치 : 클라이언트 도구 연결, 클라이언트 도구 어전버전과 호환성, 클라이언트 도구 sdk, sql 클라이언트 연결 sdk
+
+인증 모드 : 
+      - Windows 인증 모드 	: SQL Server에 접근 할때, Windows 의 로컬/도메인 계정으로 SQL Server 에 접속 , <== 보안이 강하다. 
+	- 회사의 도메인 환경이 아닐경우 접근 부가함. 
+      - 혼합 모드( Windws 인증 + SQL 인증)  :    <== 원격 에서 SQL 계정으로 접속 
+	- windows 인증 : window OS 계정으로 SQL Server를 접속 
+	- SQL 인증 :  SQL 의 계정으로 SQL Server를 접속 
+		sa    : system administrator  
+
+
+
