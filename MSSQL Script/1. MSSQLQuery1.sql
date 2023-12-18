@@ -96,6 +96,9 @@ values ( 10, '인사부', '서울');
 insert into dept01 
 values ( 20, '관리부', '부산'); 
 
+insert into dept01 
+values ( 30, '영업부', '광주'); 
+
 select * from emp01; 
 select * from dept01; 
 
@@ -104,3 +107,23 @@ alter table emp01
 add constraint FK_EMP01_DNO foreign key (dno) references dept01(dno) ;
 
 sp_help 'dbo.emp01'; 
+
+-- JOIN : ANSI JOIN : INNER JOIN ,   <== ERD ( DB 내의 테이블과 테이블의 관계 )
+
+select * 
+   from emp01 e
+	join dept01 d 
+	   on e.dno = d.dno ; 
+
+
+insert into emp01 
+values ( 3, '옥길동', 2000, '22-03-10', 30); 
+
+-- 부서가 적용 되어 있지 않는 부서를 출력 : Right Outer JOIN  
+select * 
+from emp01 e
+	Right Outer JOIN dept01 d
+		on e.dno = d.dno ; 
+
+
+
