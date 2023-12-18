@@ -31,7 +31,7 @@ drop table Orders cascade constraints;
 
 */ 
 
-desc Members; 
+-- desc Members; 
 
 -- Members 테이블
 CREATE TABLE Members (
@@ -137,8 +137,19 @@ INSERT INTO Orders (OrderID, MemberID, ProductID, OrderDate, Quantity)
 VALUES (5, 3, 5, '23/01/01', 2);
 
 -- Ansi Join 
-
+/*
 select * from members; 
 select * from addresses; 
 select * from products; 
 select * from orders; 
+*/ 
+
+
+-- 1. INNER JOIN : ANSI 호환으로 JOIN 
+--   주문자의 이름, 전화번호, 주소, 제품명, 제품가격, 구매날짜, 구매제품 갯수를 를 출력 
+
+-- 2. OUTER JOIN 
+	-- 주문 하지 않는 사용자 정보를 출력 
+	-- 주문 되지 않는 제품 정보를 출력 
+
+
